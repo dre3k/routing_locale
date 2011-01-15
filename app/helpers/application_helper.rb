@@ -5,7 +5,7 @@ def routes_helpers(*resources)
     singular_name = resource.to_s
     plural_name = resource.to_s.pluralize
     postfixes.each do |postfix|
-      ApplicationHelper.class_eval do
+      self.class_eval do
         define_method (name = plural_name + postfix).to_sym do |*args|
           if defined? params[:locale] and params[:locale]
             send(("user_locale_" + name).to_sym , params[:locale], *args)
@@ -16,7 +16,7 @@ def routes_helpers(*resources)
       end
 
       prefixes.each do |prefix|
-        ApplicationHelper.class_eval do
+        self.class_eval do
           define_method (prefix + name = (singular_name + postfix)).to_sym do |*args|
             if defined? params[:locale] and params[:locale]
               send((prefix + "user_locale_" + name).to_sym , params[:locale], *args)
