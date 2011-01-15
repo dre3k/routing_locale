@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Myapp</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<h1>Locale: <%= (defined? params[:locale]) && params[:locale] && params[:locale].upcase or "RU" %></h1>
+<p><strong>Switch locale:</strong>
+<%= link_to "EN", :controller => params[:controller], :action => params[:action], :locale => :en %>
+<%= link_to "RU", :controller => params[:controller], :action => params[:action], :locale => nil %>
+<%= link_to "UA", :controller => params[:controller], :action => params[:action], :locale => :ua %>
+</p>
+
+<%= yield %>
+
+</body>
+</html>
