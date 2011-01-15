@@ -5,6 +5,8 @@ class NotDefaultLocale
 end
 
 RoutingLocale::Application.routes.draw do
+  get "/posts", :to => redirect("/")
+
   constraints(NotDefaultLocale) do
     scope '/:locale', :as => :user_locale do
       resources :posts
