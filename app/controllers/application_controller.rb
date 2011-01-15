@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include PostsHelper
+  include ApplicationHelper
 
   protect_from_forgery
 end
