@@ -1,6 +1,6 @@
 class LocalesConstraints
   def self.matches?(request)
-    request.params[:locale] =~ /\Aen|ua\z/
+    request.params[:locale] =~ /\Aen|ua\z/ or request.params[:locale] == nil
   end
 end
 
