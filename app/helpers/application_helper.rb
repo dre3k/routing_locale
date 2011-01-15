@@ -7,22 +7,16 @@ def routing_locale_helpers(*resources)
     postfixes.each do |postfix|
       self.class_eval do
         define_method (name = plural_name + postfix).to_sym do |*args|
-          if defined? params[:locale] and params[:locale]
-            send(("locale_" + name).to_sym , params[:locale], *args)
-          else
-            send(("locale_" + name).to_sym, nil, *args)
-          end
+          locale = (defined? params[:locale]) && (locale = params[:locale]) ? locale : nil
+          send(("locale_" + name).to_sym , locale, *args)
         end
       end
 
       prefixes.each do |prefix|
         self.class_eval do
           define_method (prefix + name = (singular_name + postfix)).to_sym do |*args|
-            if defined? params[:locale] and params[:locale]
-              send((prefix + "locale_" + name).to_sym , params[:locale], *args)
-            else
-              send((prefix + "locale_" + name).to_sym, nil, *args)
-            end
+            locale = (defined? params[:locale]) && (locale = params[:locale]) ? locale : nil
+            send((prefix + "locale_" + name).to_sym , locale, *args)
           end
         end
       end
