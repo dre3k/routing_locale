@@ -5,13 +5,11 @@ class LocaleConstraints
 end
 
 RoutingLocale::Application.routes.draw do
-  get "/", :to => redirect("/posts")
+  root :to => redirect("/posts")
 
   constraints(LocaleConstraints) do
     scope '(/:locale)', :as => :locale do
       resources :posts
     end
   end
-
-  # root :to => "posts#index"
 end
