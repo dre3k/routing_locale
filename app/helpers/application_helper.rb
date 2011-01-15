@@ -1,4 +1,4 @@
-def routes_helpers(*resources)
+def routing_locale_helpers(*resources)
   postfixes = %w[_path _url]
   prefixes  = %w[edit_ new_] << ''
   resources.each do |resource|
@@ -31,5 +31,5 @@ def routes_helpers(*resources)
 end
 
 module ApplicationHelper
-  routes_helpers :post
+  routing_locale_helpers :post
 end
