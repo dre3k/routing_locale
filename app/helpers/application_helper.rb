@@ -8,9 +8,9 @@ def routes_helpers(*resources)
       self.class_eval do
         define_method (name = plural_name + postfix).to_sym do |*args|
           if defined? params[:locale] and params[:locale]
-            send(("user_locale_" + name).to_sym , params[:locale], *args)
+            send(("locale_" + name).to_sym , params[:locale], *args)
           else
-            send(("default_locale_" + name).to_sym, *args)
+            send(("locale_" + name).to_sym, nil, *args)
           end
         end
       end
@@ -19,9 +19,9 @@ def routes_helpers(*resources)
         self.class_eval do
           define_method (prefix + name = (singular_name + postfix)).to_sym do |*args|
             if defined? params[:locale] and params[:locale]
-              send((prefix + "user_locale_" + name).to_sym , params[:locale], *args)
+              send((prefix + "locale_" + name).to_sym , params[:locale], *args)
             else
-              send((prefix + "default_locale_" + name).to_sym, *args)
+              send((prefix + "locale_" + name).to_sym, nil, *args)
             end
           end
         end

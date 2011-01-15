@@ -8,13 +8,9 @@ RoutingLocale::Application.routes.draw do
   get "/", :to => redirect("/posts")
 
   constraints(NotDefaultLocale) do
-    scope '/:locale', :as => :user_locale do
+    scope '(/:locale)', :as => :locale do
       resources :posts
     end
-  end
-
-  scope :as => :default_locale do
-    resources :posts
   end
 
   # root :to => "posts#index"
