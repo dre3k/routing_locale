@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Locale: <%= (defined? params[:locale]) && params[:locale] && params[:locale].upcase or "RU" %></h1>
-<%= link_to "Home", !params[:locale] && '/' || root_path %> |
+<%= link_to "Home", root_path %> |
 <%= link_to "Posts", posts_path %>
 <br>
 <p><strong>Switch locale:</strong>
