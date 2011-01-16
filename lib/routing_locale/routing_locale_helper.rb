@@ -10,7 +10,7 @@ module RoutingLocaleHelper
   def self.included(base)
     base.instance_eval do
       POSTFIXES.each do |postfix|
-        #special hack for root route: '/' on default locale
+        #special hack for root route: return '/' on default locale
         define_method ('root' + postfix).to_sym do |*args|
           if (defined? params[:locale]) && params[:locale]
             send ('locale_root' + postfix).to_sym, params[:locale], *args
@@ -30,4 +30,8 @@ module RoutingLocaleHelper
       end
     end
   end
+end
+
+module ApplicationHelper
+  include RoutingLocaleHelper
 end
