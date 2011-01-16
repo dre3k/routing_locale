@@ -14,3 +14,6 @@ RoutingLocale::Application.routes.draw do
     end
   end
 end
+
+# IMPORTANT: have to be the last line in routes.rb
+require 'routing_locale/routing_locale_helper'
