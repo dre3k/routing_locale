@@ -8,9 +8,12 @@
 </head>
 <body>
 <h1>Locale: <%= (defined? params[:locale]) && params[:locale] && params[:locale].upcase or "RU" %></h1>
+<%= link_to "Home", !params[:locale] && '/' || root_path %> |
+<%= link_to "Posts", posts_path %>
+<br>
 <p><strong>Switch locale:</strong>
-<%= link_to "EN", :controller => params[:controller], :action => params[:action], :locale => :en %>
-<%= link_to "RU", :controller => params[:controller], :action => params[:action], :locale => nil %>
+<%= link_to "EN", :controller => params[:controller], :action => params[:action], :locale => :en %> |
+<%= link_to "RU", :controller => params[:controller], :action => params[:action], :locale => nil %> |
 <%= link_to "UA", :controller => params[:controller], :action => params[:action], :locale => :ua %>
 </p>
 
